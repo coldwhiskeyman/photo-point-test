@@ -2,3 +2,6 @@ pydantic_settings==2.10.1
 sqlalchemy==2.0.43
 twilio==9.8.1
 aiogram==3.22.0
+fastapi==0.117.1
+uvicorn==0.37.0
+psycopg2-binary==2.9.9

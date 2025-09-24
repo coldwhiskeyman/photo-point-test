@@ -29,4 +29,10 @@ def get_user(user_id: int) -> Optional[User]:
         return session.get(User, user_id)
 
 
-
+def create_user(email: str = None, phone: str = None, telegram_id: int = None) -> User:
+    with SessionLocal() as session:
+        user = User(email=email, phone=phone, telegram_id=telegram_id)
+        session.add(user)
+        session.commit()
+        session.refresh(user)
+        return user

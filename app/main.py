@@ -8,12 +8,11 @@ from config import get_settings
 from db import get_user
 
 
-def _get_channels():
-    return {
-        "email": EmailService(),
-        "sms": SmsService(),
-        "telegram": TelegramService(),
-    }
+channels = {
+    "email": EmailService(),
+    "sms": SmsService(),
+    "telegram": TelegramService(),
+}
 
 
 def _order_channels() -> List[str]:
@@ -28,7 +27,6 @@ async def send(user_id: int, text: str):
         return
 
     settings = get_settings()
-    channels = _get_channels()
     order = _order_channels()
 
     for attempt in range(1, settings.MAX_RETRIES + 1):
